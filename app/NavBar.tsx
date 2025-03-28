@@ -1,5 +1,12 @@
 "use client";
-import { Avatar, Box, Container, DropdownMenu, Flex, Text } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Container,
+  DropdownMenu,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
 import classnames from "classnames";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -14,6 +21,7 @@ const NavBar = () => {
 
   const currentPath = usePathname();
   const { status, data: session } = useSession();
+  console.log("Session Data:", session);
 
   return (
     <nav className="border-b mb-5 px-5 py-3">
@@ -45,10 +53,13 @@ const NavBar = () => {
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
                   <Avatar
-                    src={session.user!.image!}
-                    fallback="?"
+                    src={
+                      session?.user?.image ||
+                      "https://images.unsplash.com/vector-1740737650825-1ce4f5377085?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }
                     size="2"
                     radius="full"
+                    fallback="?"
                     className="cursor-pointer"
                   />
                 </DropdownMenu.Trigger>
