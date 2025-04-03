@@ -20,3 +20,8 @@ export default async function Home() {
     </Grid>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Task Pulse - Dashboard",
+  description: "View a summary of the Tasks."
+}

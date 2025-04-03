@@ -50,4 +50,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
 export const dynamic = "force-dynamic"; // Ensure the page is dynamic
 
+export const metadata: Metadata = {
+  title: "Task Pulse - Task Lists",
+  description: "View all Tasks.",
+};
+
 export default IssuesPage;
