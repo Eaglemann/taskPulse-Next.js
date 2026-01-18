@@ -1,5 +1,5 @@
 "use client";
-import { Button, Callout, TextField, Text } from "@radix-ui/themes";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import { FaceIcon } from "@radix-ui/react-icons";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
@@ -41,6 +41,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       router.push("/issues/list");
       router.refresh();
     } catch (error) {
+      console.error(error);
       setSubmitting(false);
       setError("An unexpected error occurred.");
     }

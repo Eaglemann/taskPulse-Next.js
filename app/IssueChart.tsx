@@ -1,5 +1,5 @@
 "use client";
-import { Card, ProgressProps } from "@radix-ui/themes";
+import { Card } from "@radix-ui/themes";
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar } from "recharts";
 
 interface Props {

@@ -10,7 +10,7 @@ import AssigneSelect from "./AssigneSelect";
 import { cache } from "react";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const fetchUser = cache((issueId: number) =>
@@ -19,8 +19,9 @@ const fetchUser = cache((issueId: number) =>
 
 const IssueDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions);
+  const { id } = await params;
 
-  const issue = await fetchUser(parseInt(params.id));
+  const issue = await fetchUser(parseInt(id));
 
   if (!issue) notFound();
 
@@ -43,7 +44,8 @@ const IssueDetailPage = async ({ params }: Props) => {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const issue = await fetchUser(parseInt(params.id));
+  const { id } = await params;
+  const issue = await fetchUser(parseInt(id));
 
   return {
     title: issue?.title,
